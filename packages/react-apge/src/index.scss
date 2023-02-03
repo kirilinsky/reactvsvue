@@ -1,15 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+
+:root {
+  --px: 0.3rem;
+
+  --text-light: 0.8rem;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Nunito;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 * {
@@ -20,4 +20,65 @@ code {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.section {
+  height: 50%;
+  border: 1px solid red;
+}
+
+.title {
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--px) 1.25rem;
+}
+
+.block {
+  display: flex;
+  padding: var(--px) 1.25rem;
+  &_input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+      padding: var(--px);
+      border: 1px solid #999;
+      border-radius: 0.25rem;
+    }
+    label {
+      font-size: var(--text-light);
+    }
+  }
+
+  &_filters{
+    flex-wrap: wrap;
+    gap: var(--px);
+  }
+}
+
+
+/* radio */
+
+.radio{
+   label{
+    text-transform: capitalize;
+   }
+  &_block{
+    width: calc(50% - var(--px));
+    background: #c2c2c2;
+    display: flex;
+    flex-direction: column;
+    h2{
+      text-align: center;text-transform: capitalize;
+    }
+   
+    &_buttons{
+      display: flex;
+      gap: var(--px);
+    }
+  }
+   
 }

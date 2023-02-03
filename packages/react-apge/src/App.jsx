@@ -1,29 +1,32 @@
-import { SearchInput } from "./components";
-import { Grid } from "./ui/grid";
-import { GridCell } from "./ui/gridCell";
-import { Section } from "./ui/section";
+import { useState } from "react";
+import FilterBlock from "./blocks/FilterBlock";
+import { SearchInput } from "./components"; 
+
 
 function App() {
+  const [filters, setFilters] = useState({
+    type: null,
+    color: null,
+    size: null,
+  });
+
   return (
     <div className="wrap">
-      <Section className="filters">
-        <h2>Prodcut Search</h2>
-        <Grid>
-          <GridCell>
+      <section className="section filters">
+        <h2 className="title">Prodcut Search</h2> 
+
             <SearchInput />
-          </GridCell>
-          <GridCell lg>
-             
-          </GridCell>
-          <GridCell>
-            2
-          </GridCell>
-          <GridCell>
-            3
-          </GridCell>
-        </Grid>
-      </Section>
-      <Section></Section>
+         
+       
+          <div className="block block_filters">
+            <FilterBlock field={'types'}/>
+            <FilterBlock field={'colors'}/>
+            <FilterBlock field={'sizes'}/>
+           </div>
+       
+      
+      </section>
+      <section className="section list">list</section>
     </div>
   );
 }

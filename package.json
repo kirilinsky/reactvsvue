@@ -8,10 +8,10 @@
   "scripts": {
     "start": "lerna run start",
     "test": "lerna run test",
-    "localtest" :"echo local test",
+    "localtest": "echo local test",
     "version": "lerna version --conventional-commits --yes"
   },
   "devDependencies": {
     "lerna": "^6.1.0"
-  }
+  } 
 }

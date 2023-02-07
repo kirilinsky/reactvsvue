@@ -18,13 +18,17 @@ body {
 .wrap {
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 765px) {
+     height: auto;
+  }
 }
 
 .section {
   height: 50%;
-  border: 1px solid red;
+  border: 1px solid rgba(0, 0, 0, 0.186);
 }
 
 .title {
@@ -53,32 +57,124 @@ body {
     }
   }
 
-  &_filters{
+  &_filters {
     flex-wrap: wrap;
     gap: var(--px);
   }
 }
 
-
 /* radio */
 
-.radio{
-   label{
+.radio {
+  position: relative;
+  margin: 5px;
+  label {
     text-transform: capitalize;
-   }
-  &_block{
+    display: inline-block;
+    background-color: #ddd;
+    padding: 0.75rem 1.25rem;
+    font-family: sans-serif, Arial;
+    font-size: 1rem;
+    border: 1px solid #44444477;
+    border-radius: 12px;
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  input[type="radio"]:checked + label {
+    background-color: #bfb;
+    border-color: #4c4;
+  }
+  input[type="radio"]:focus + label {
+    border: 1px solid #2f408e;
+  }
+  label:hover {
+    background-color: #dfd;
+    cursor: pointer;
+  }
+  &_block {
     width: calc(50% - var(--px));
-    background: #c2c2c2;
+    background: #f5f0f0a4;
     display: flex;
+
     flex-direction: column;
-    h2{
-      text-align: center;text-transform: capitalize;
+    border-radius: 4px;
+    @media screen and (max-width: 765px) {
+      width: 100%;
     }
-   
-    &_buttons{
+    h2 {
+      text-align: center;
+      text-transform: capitalize;
+      margin-block: 8px;
+    }
+
+    &_buttons {
       display: flex;
+      align-items: center;
+      justify-content: center;
       gap: var(--px);
     }
   }
-   
 }
+/* end radio */
+
+/* tag */
+
+.tag{
+  background-color: rgba(53, 125, 53, 0.446);
+  border: 1px solid rgba(36, 107, 36, 0.664);
+  padding: 0.25rem 0.475rem;
+  border-radius: 0.625rem;
+  margin: 0.3125rem;
+  font-size: 13px;
+  width: max-content;
+  &.error{
+   background: #a02121;
+   border-color: #b81111;
+   margin: 50px auto;
+  }
+}
+
+
+/* list */
+section.list {
+  overflow-y: auto;
+}
+/* goods */
+.good_item{
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #00000024;
+  &_pic{
+    width: 20%;
+    min-height: 10.625rem;
+    max-height: 25rem;
+    img{
+      border-radius: 0.3125rem;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  &_tags{
+    display: flex;
+  }
+  &_body{
+    padding: var(--px) 1.5625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  &_title{
+    margin-block: 0.3125rem;
+  }
+  &_desc{
+    line-height: 2;
+  }
+  &_price{
+    text-align: right;
+  }
+}
+ 

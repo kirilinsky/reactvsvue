@@ -12,6 +12,7 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.send('backend live status')
 })
+ 
 
 app.get('/items', (req, res) => {
     res.send(data)

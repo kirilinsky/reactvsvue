@@ -15,9 +15,11 @@ const FilterBlock = ({ field }) => {
   return (
     <div className="radio_block">
       <h2>{field}</h2>
-      <div className="radio_block_buttons"> 
+      <div className="radio_block_buttons">
         {data &&
-          data.map((label) => <RadioButton name={field} label={label} />)}
+          data.map((label, idx) => (
+            <RadioButton key={idx} name={field} label={label} />
+          ))}
       </div>
     </div>
   );

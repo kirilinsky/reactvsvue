@@ -18,15 +18,15 @@ app.get('/items', (req, res) => {
     res.send(data)
 })
 
-app.get('/types', (req, res) => {
+app.get('/type', (req, res) => {
     res.send(types)
 })
 
-app.get('/colors', (req, res) => {
+app.get('/color', (req, res) => {
     res.send(colors)
 })
 
-app.get('/sizes', (req, res) => {
+app.get('/size', (req, res) => {
     res.send(sizes)
 })
 

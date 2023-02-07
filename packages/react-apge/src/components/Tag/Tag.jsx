@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Tag = ({title}) => {
+const Tag = ({title,error}) => {
     return (
-        <div className='tag'>
+        <div className={`${error && 'error'} tag`}>
         {title}
         </div>
     );

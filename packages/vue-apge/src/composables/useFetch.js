@@ -11,8 +11,7 @@ export function useFetch(url) {
         data.value = null;
         test.value = '100'
         error.value = null;
-        try {
-
+        try { 
             let res = await axios.get(url);
             data.value = res.data 
             return data.value
@@ -21,7 +20,10 @@ export function useFetch(url) {
             console.log(err, 'er');
             error.value = err;
         }
-        loading.value = false;
+        finally{
+            loading.value = false;
+        }
+        
     };
 
     watchEffect(getData)

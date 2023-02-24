@@ -27,17 +27,20 @@ function App() {
   return (
     <div className="wrap">
       <section className="section filters">
-        <Nav action={() => setShowModal(true)}/>
+        <Nav action={() => setShowModal(true)} />
         <h2 className="title">Prodcut Search</h2>
         <SearchInput filters={filters} setFilter={setFilter} />
         <div className="block block_filters">
-          <FilterBlock filters={filters} setFilter={setFilter} field={"type"} />
-          <FilterBlock
-            filters={filters}
-            setFilter={setFilter}
-            field={"color"}
-          />
-          <FilterBlock filters={filters} setFilter={setFilter} field={"size"} />
+          {Object.keys(filters).map((filter) => {
+            if (filter !== "name")
+              return (
+                <FilterBlock
+                  filters={filters}
+                  setFilter={setFilter}
+                  field={filter}
+                />
+              );
+          })}
         </div>
       </section>
       <GoodsBlock resetFilters={resetFilters} filters={filters} />

@@ -2,9 +2,12 @@
   <div class="wrap">
     <section className="section filters">
       <h2 className="title">Prodcut Search</h2>
-      <SearchInput/>
+      <SearchInput />
+      <div className="block block_filters">
+         <FiltersBlock v-for="(value, index) in keys" :key="index" :field="value" />
+       </div>
     </section>
-    <GoodsBlock/>
+    <GoodsBlock />
   </div>
 </template>
 
@@ -17,8 +20,16 @@ export default {
 <script setup>
 import SearchInput from "./components/SearchInput.vue";
 import GoodsBlock from "./blocks/GoodsBlock.vue";
-//import HelloWorld from './components/HelloWorld.vue'
-const x = 12;
+import FiltersBlock from "./blocks/FiltersBlock.vue";
+
+const defFilters = {
+  type: null,
+  size: null,
+  color: null,
+  name: "",
+};
+
+let keys = Object.keys(defFilters).filter(x=>x!=='name')
 </script>
 
 <style></style>

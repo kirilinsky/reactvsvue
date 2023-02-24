@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   @media screen and (max-width: 765px) {
-     height: auto;
+    height: auto;
   }
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .title {
-  margin: 0 auto;
+  margin: 0 auto 0.625rem;
   text-align: center;
   padding: var(--px) 1.25rem;
 }
@@ -71,12 +71,12 @@ body {
   label {
     text-transform: capitalize;
     display: inline-block;
-    background-color: #ddd;
+    background-color: #dddddd91;
     padding: 0.75rem 1.25rem;
     font-family: sans-serif, Arial;
     font-size: 1rem;
     border: 1px solid #44444477;
-    border-radius: 12px;
+    border-radius: 19px;
   }
 
   input[type="radio"] {
@@ -97,7 +97,6 @@ body {
   }
   &_block {
     width: calc(50% - var(--px));
-    background: #f5f0f0a4;
     display: flex;
 
     flex-direction: column;
@@ -131,50 +130,146 @@ body {
   margin: 0.3125rem;
   font-size: 13px;
   width: max-content;
-  &.error{
-   background: #a02121;
-   border-color: #b81111;
-   margin: 50px auto;
+  &.error {
+    background: #a02121;
+    border-color: #b81111;
+    margin: 50px auto;
   }
 }
-
 
 /* list */
 section.list {
   overflow-y: auto;
+  background: rgb(245 245 247);
 }
 /* goods */
-.good_item{
-  display: flex;
-  margin-bottom: 25px;
-  border-bottom: 1px solid #00000024;
-  &_pic{
-    width: 20%;
-    min-height: 10.625rem;
-    max-height: 25rem;
-    img{
-      border-radius: 0.3125rem;
-      max-width: 100%;
-      max-height: 100%;
+.good_item {
+  display: flex; border-bottom: 1px solid #ccc;
+  &_action{
+    border-radius: 10px;
+    width: 100px;
+    border:none;
+    padding: 5px 2px;
+    align-self: flex-end;cursor: pointer;
+    &:hover{
+      box-shadow: 0 0 1px #4e4646;
     }
   }
-  &_tags{
+  &_pic {
+    width: 20%;
+
+    max-height: 25rem;
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+  &_tags {
     display: flex;
   }
-  &_body{
+  &_body {
     padding: var(--px) 1.5625rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
   }
-  &_title{
+  &_title {
     margin-block: 0.3125rem;
   }
-  &_desc{
+  &_desc {
     line-height: 2;
   }
-  &_price{
+  &_price {
     text-align: right;
   }
 }
- 
+
+/* error box */
+.error-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  img {
+    width: 24px;
+    height: 24px;
+    &.load {
+      animation: rotation 2s infinite linear;
+    }
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  h3 {
+    color: #999;
+  }
+}
+
+/* nav */
+nav.nav {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  img {
+    width: 23px;
+    height: 23px;
+  }
+}
+/* modal */
+.modal {
+  position: fixed;
+  inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 999;
+  padding: 40px 20px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.4);
+}
+
+.modal-enter-done {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.modal-exit {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.modal-content {
+  width: 70%;
+  height: 70%;
+  background-color: #282c34;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

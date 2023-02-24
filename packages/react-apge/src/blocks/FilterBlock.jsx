@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import RadioButton from "../components/RadioButton";
 import useFetch from "../hooks/useFetch";
 
-const FilterBlock = ({ field, setFilter }) => {
+const FilterBlock = ({ field, filters, setFilter }) => {
   const { data, loading, error } = useFetch(`http://localhost:5001/${field}`);
 
-  const onChange = (e) => { 
+  const handleChange = (e) => {
     let { name, value } = e.target;
+    console.log(name, value);
+    if (filters[name] === value) {
+      value = null;
+      console.log(3);
+    }
     setFilter(name, value);
   };
   if (error) {
@@ -23,10 +28,11 @@ const FilterBlock = ({ field, setFilter }) => {
         {data &&
           data.map((label, idx) => (
             <RadioButton
-              onChange={onChange}
+              onChange={handleChange}
               key={idx}
               name={field}
               label={label}
+              checked={filters[field] === label}
             />
           ))}
       </div>

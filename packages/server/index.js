@@ -1,21 +1,23 @@
 const express = require('express')
 var cors = require('cors')
-
 const port = process.env.PORT || 5001
 
-const {data, types, sizes, colors} = require('./data')
+const { data, types, sizes, colors } = require('./data')
 
 
 
 const app = express()
-app.use(cors()) 
+app.use(cors())
 app.get('/', (req, res) => {
     res.send('backend live status')
 })
- 
+
 
 app.get('/items', (req, res) => {
-    res.send(data)
+    setTimeout(() => {
+        res.send(data)
+    }, 2000)
+
 })
 
 app.get('/type', (req, res) => {

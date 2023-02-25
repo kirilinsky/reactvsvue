@@ -3,19 +3,28 @@ import Tag from "../Tag";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useColor } from "color-thief-react";
+import { useCartDispatch } from "../../hooks/useCartStore";
 
 const squareVariants = {
   visible: { opacity: 1, transition: { duration: 1 } },
   hidden: { opacity: 0 },
 };
 
-const GoodComponent = ({ data: { name, price, type, color, size, image } }) => {
+const GoodComponent = ({ data }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
-  const { data: bg } = useColor(image,  'hex', {
+  const { name, price, type, color, size, image } = data;
+
+  const { data: bg } = useColor(image, "hex", {
     crossOrigin: true,
-    quality:33
+    quality: 10,
   });
+
+  const dispatch = useCartDispatch();
+
+  const buyItem = () => {
+    dispatch({ type: "ADD", payload: data });
+  };
 
   useEffect(() => {
     if (inView) {
@@ -48,7 +57,9 @@ const GoodComponent = ({ data: { name, price, type, color, size, image } }) => {
             <Tag title={color} />
             <Tag title={size} />
           </div>
-          <button className="good_item_action">Buy</button>
+          <button className="good_item_action" onClick={buyItem}>
+            Buy
+          </button>
         </div>
       </div>
     </motion.div>

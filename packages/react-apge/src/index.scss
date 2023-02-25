@@ -122,7 +122,7 @@ body {
 
 /* tag */
 
-.tag{
+.tag {
   background-color: rgba(53, 125, 53, 0.446);
   border: 1px solid rgba(36, 107, 36, 0.664);
   padding: 0.25rem 0.475rem;
@@ -133,7 +133,8 @@ body {
   &.error {
     background: #a02121;
     border-color: #b81111;
-    margin: 50px auto;
+    margin: 5px auto;
+    cursor: pointer;
   }
 }
 
@@ -144,14 +145,16 @@ section.list {
 }
 /* goods */
 .good_item {
-  display: flex; border-bottom: 1px solid #ccc;
-  &_action{
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  &_action {
     border-radius: 10px;
     width: 100px;
-    border:none;
+    border: none;
     padding: 5px 2px;
-    align-self: flex-end;cursor: pointer;
-    &:hover{
+    align-self: flex-end;
+    cursor: pointer;
+    &:hover {
       box-shadow: 0 0 1px #4e4646;
     }
   }
@@ -238,31 +241,68 @@ nav.nav {
   transition: all 0.3s ease-in-out;
   overflow: hidden;
   z-index: 999;
-  padding: 40px 20px 20px;
+  padding: 20px 20px 20px;
+
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.4);
+  &-enter-done {
+    opacity: 1;
+    pointer-events: auto;
+    .modal-content {
+      transform: translateX(0);
+      transition: 0.3s linear;
+    }
+  }
+  &-exit {
+    opacity: 0;
+    .modal-content {
+      transform: translateX(150%);
+      transition: 0.3s linear;
+    }
+  }
+  &-content {
+    width: 70%;
+    height: 70%;
+    background-color: #282c34;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 2rem;
+    position: relative;
+    transform: translateX(150%);
+    transition: 0.3s linear;
+    border-radius: 5px;
+  }
+  &-close-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
 }
 
-.modal-enter-done {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1);
-}
-.modal-exit {
-  opacity: 0;
-  transform: scale(0.4);
-}
-
-.modal-content {
-  width: 70%;
-  height: 70%;
-  background-color: #282c34;
-  color: #fff;
+/* cart */
+.cart{
   display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
   align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+  &-item{
+    display: flex;
+    width: 98%;
+    flex-direction: column;
+    padding: 2px 15px;
+    border-bottom: 1px solid #fff;
+    &_header {
+      display: flex;
+      justify-content: space-between;
+       
+    }
+    &_footer {
+      display: flex;
+    }
+  }
 }
 
 @keyframes rotation {

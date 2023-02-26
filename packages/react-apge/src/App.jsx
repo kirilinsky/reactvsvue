@@ -14,9 +14,10 @@ const defFilters = {
   name: "",
 };
 
-function App() {
-  const [filters, setFilters] = useState(defFilters);
+function App() { 
   const [showModal, setShowModal] = useState(false);
+  
+  const [filters, setFilters] = useState(defFilters);
 
   const setFilter = (key, value) => {
     setFilters({ ...filters, [key]: value });

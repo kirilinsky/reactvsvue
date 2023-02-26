@@ -24,7 +24,7 @@ const reducer = (state, action) => {
         });
       }
       return cart;
-    case "DELETE": 
+    case "DELETE":
       let store = [...state].map((item) => {
         if (item.id === currentItem) {
           return { ...item, quantity: item.quantity - 1 };

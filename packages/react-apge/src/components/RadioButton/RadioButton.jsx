@@ -1,7 +1,8 @@
 import React, { useId } from "react";
 
-const RadioButton = ({checked, onChange, name, label }) => {
+const RadioButton = ({ checked, onChange, name, label }) => {
   const inpId = useId();
+  
   return (
     <div className="radio">
       <input
@@ -13,9 +14,9 @@ const RadioButton = ({checked, onChange, name, label }) => {
         checked={checked}
         id={inpId}
       />
-      <label htmlFor={inpId}>{label}
-       </label>
-      
+      <label title={label} htmlFor={inpId}>
+        {label}
+      </label>
     </div>
   );
 };

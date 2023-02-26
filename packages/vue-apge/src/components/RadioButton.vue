@@ -1,7 +1,7 @@
 <template>
   <div className="radio">
     <input
-      :onClick="onChange"
+      @click="onChange"
       :value="label"
       :name="name"
       type="radio"

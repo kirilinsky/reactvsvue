@@ -1,12 +1,12 @@
 <template>
   <div className="radio">
     <input
-      @click="onChange"
       :value="label"
       :name="name"
       type="radio"
       :checked="checked"
       :id="id"
+      @change="handleOptionSelected"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -18,11 +18,15 @@ export default {
   props: {
     label: String,
     checked: Boolean,
-    onChange: Function,
+    changeFilters: Function,
     name: String,
+    id: String,
   },
-  mounted() {
-    this.id = this._uid;
+
+  methods: {
+    handleOptionSelected({ target: { name, value } }) {
+      this.changeFilters(name, value);
+    },
   },
 };
 </script>

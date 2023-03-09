@@ -8,7 +8,10 @@
         v-for="(label, i) in data"
         :label="label"
         :key="i"
+        :id="field + i"
         :name="field"
+        :checked="filters[field] === label"
+        :changeFilters="changeFilters"
       />
     </div>
   </div>
@@ -30,10 +33,12 @@ import { useFetch } from "@/composables/useFetch";
 
 const props = defineProps({
   field: String,
+  changeFilters: Function,
+  filters: Object,
 });
-const { field } = toRefs(props);
+const { filters, field, changeFilters } = toRefs(props);
 
- 
+console.log(changeFilters, "changeFilters");
 
 const { data, loading, getData, error } = useFetch(
   `http://localhost:5001/${field.value}`

@@ -2,12 +2,18 @@
   <div class="wrap">
     <section className="section filters">
       <h2 className="title">Prodcut Search</h2>
-      <SearchInput />
+      <SearchInput :changeFilters="changeFilters" :filters="state.filters" />
       <div className="block block_filters">
-         <FiltersBlock v-for="(value, index) in keys" :key="index" :field="value" />
-       </div>
+        <FiltersBlock
+          v-for="(value, index) in keys"
+          :key="index"
+          :field="value"
+          :changeFilters="changeFilters"
+          :filters="state.filters"
+        />
+      </div>
     </section>
-    <GoodsBlock />
+    <GoodsBlock :resetFilters="resetFilters" :filters="state.filters" />
   </div>
 </template>
 
@@ -21,6 +27,7 @@ export default {
 import SearchInput from "./components/SearchInput.vue";
 import GoodsBlock from "./blocks/GoodsBlock.vue";
 import FiltersBlock from "./blocks/FiltersBlock.vue";
+import { reactive } from "vue";
 
 const defFilters = {
   type: null,
@@ -29,7 +36,20 @@ const defFilters = {
   name: "",
 };
 
-let keys = Object.keys(defFilters).filter(x=>x!=='name')
+const state = reactive({
+  filters: { ...defFilters },
+});
+
+function changeFilters(field, value) {
+  console.log(field, value, "inv");
+  state.filters[field] = value;
+}
+
+function resetFilters() {
+  state.filters = { ...defFilters };
+}
+
+let keys = Object.keys(defFilters).filter((x) => x !== "name");
 </script>
 
 <style></style>
